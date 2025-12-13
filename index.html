@@ -152,9 +152,30 @@
         });
 
         yearFilter.addEventListener('change', performSearch);
+try {
+    const response = await fetch(`${API_URL}/search?q=${encodeURIComponent(query)}&year=${year}`);
+try {
+    console.log('Fetching from:', `${API_URL}/search?q=${query}&year=${year}`);
+    const response = await fetch(`${API_URL}/search?q=${encodeURIComponent(query)}&year=${year}`);
+    
+    console.log('Response status:', response.status);
+    
+    if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+    }
 
+    const data = await response.json();
+    console.log('Results:', data);
+    displayResults(data);
+} catch (error) {
+    console.error('Detailed Error:', error);
+    showError(`Failed to fetch results: ${error.message}. Backend might be sleeping (Render free tier - wait 1 minute and try again).`);
+    resultsDiv.innerHTML = '';
+    resultsHeader.textContent = '0 Results Found';
+}
         // Initial display
         resultsDiv.innerHTML = '<div class="empty-state"><p>👆 Start typing above to search for electric motor publications from Google Scholar</p></div>';
     </script>
 </body>
 </html>
+
