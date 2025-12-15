@@ -9,6 +9,8 @@
         body { font-family: Arial, sans-serif; background: linear-gradient(to bottom right, #f9fafb, #e5e7eb); min-height: 100vh; }
         header { background: white; border-bottom: 1px solid #e5e7eb; padding: 24px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
         .container { max-width: 1200px; margin: 0 auto; padding: 0 16px; }
+        .header-content { display: flex; align-items: center; gap: 24px; }
+        .logo { width: 120px; height: 50px; }
         h1 { font-size: 24px; font-weight: bold; color: #111827; margin-bottom: 4px; }
         .subtitle { font-size: 14px; color: #6b7280; }
         main { max-width: 1200px; margin: 32px auto; padding: 0 16px; }
@@ -40,8 +42,18 @@
 <body>
     <header>
         <div class="container">
-            <h1>Center for Hybrid Electric Systems (CHESCO)</h1>
-            <p class="subtitle">Cottbus</p>
+            <div class="header-content">
+                <svg class="logo" viewBox="0 0 300 100" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="20" y="20" width="220" height="60" rx="10" fill="none" stroke="black" stroke-width="6"/>
+                    <rect x="240" y="35" width="15" height="30" fill="none" stroke="black" stroke-width="6"/>
+                    <rect x="250" y="35" width="15" height="30" fill="none" stroke="black" stroke-width="6"/>
+                    <text x="130" y="60" font-family="Arial, sans-serif" font-size="32" font-weight="bold" text-anchor="middle" fill="black">chesco</text>
+                </svg>
+                <div>
+                    <h1>Center for Hybrid Electric Systems</h1>
+                    <p class="subtitle">Cottbus</p>
+                </div>
+            </div>
         </div>
     </header>
 
@@ -67,7 +79,6 @@
 
     <footer>
         <p>&copy; 2024 Center for Hybrid Electric Systems (CHESCO), Cottbus</p>
-        <p style="margin-top: 8px; font-size: 12px;">Powered by Google Scholar</p>
     </footer>
 
     <script>
@@ -81,7 +92,7 @@
         const errorMessage = document.getElementById('errorMessage');
 
         function showLoading() {
-            resultsDiv.innerHTML = '<div class="loading"><div class="spinner"></div><p style="margin-top: 16px; color: #6b7280;">Searching...</p></div>';
+            resultsDiv.innerHTML = '<div class="loading"><div class="spinner"></div><p style="margin-top: 16px; color: #6b7280;">Searching academic databases...</p></div>';
         }
 
         function showError(message) {
@@ -95,7 +106,7 @@
 
             if (results.length === 0) {
                 if (searchInput.value === '') {
-                    resultsDiv.innerHTML = '<div class="empty-state"><p>👆 Start typing above to search for electric motor publications from Google Scholar</p></div>';
+                    resultsDiv.innerHTML = '<div class="empty-state"><p>Start typing above to search for electric motor publications</p></div>';
                 } else {
                     resultsDiv.innerHTML = `<div class="empty-state"><p>No publications found for "${searchInput.value}". Try different keywords.</p></div>`;
                 }
@@ -122,7 +133,7 @@
 
             if (!query) {
                 resultsHeader.textContent = '0 Results Found';
-                resultsDiv.innerHTML = '<div class="empty-state"><p>👆 Start typing above to search for electric motor publications from Google Scholar</p></div>';
+                resultsDiv.innerHTML = '<div class="empty-state"><p>Start typing above to search for electric motor publications</p></div>';
                 return;
             }
 
@@ -140,7 +151,7 @@
                 displayResults(data);
             } catch (error) {
                 console.error('Error:', error);
-                showError('Failed to fetch results. Backend might be sleeping (Render free tier). Wait 1 minute and try again.');
+                showError('Unable to fetch results. Please try again in a moment.');
                 resultsDiv.innerHTML = '';
                 resultsHeader.textContent = '0 Results Found';
             }
@@ -152,30 +163,8 @@
         });
 
         yearFilter.addEventListener('change', performSearch);
-try {
-    const response = await fetch(`${API_URL}/search?q=${encodeURIComponent(query)}&year=${year}`);
-try {
-    console.log('Fetching from:', `${API_URL}/search?q=${query}&year=${year}`);
-    const response = await fetch(`${API_URL}/search?q=${encodeURIComponent(query)}&year=${year}`);
-    
-    console.log('Response status:', response.status);
-    
-    if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-    }
 
-    const data = await response.json();
-    console.log('Results:', data);
-    displayResults(data);
-} catch (error) {
-    console.error('Detailed Error:', error);
-    showError(`Failed to fetch results: ${error.message}. Backend might be sleeping (Render free tier - wait 1 minute and try again).`);
-    resultsDiv.innerHTML = '';
-    resultsHeader.textContent = '0 Results Found';
-}
-        // Initial display
-        resultsDiv.innerHTML = '<div class="empty-state"><p>👆 Start typing above to search for electric motor publications from Google Scholar</p></div>';
+        resultsDiv.innerHTML = '<div class="empty-state"><p>Start typing above to search for electric motor publications</p></div>';
     </script>
 </body>
 </html>
-
