@@ -410,71 +410,11 @@
             return motorFunFacts[Math.floor(Math.random() * motorFunFacts.length)];
         }
 
-        // ============================================
-        // CHATBOT SYSTEM PROMPT
-        // ============================================
-        const SYSTEM_PROMPT = `You are "Ask CHESCO" - a specialized technical assistant for the Center for Hybrid Electric Systems (CHESCO) in Cottbus, Germany.
-
 
         // ============================================
         // CHATBOT FUNCTIONS
         // ============================================
-        async function sendChatMessage() {
-            const userMessage = chatInput.value.trim();
-            if (!userMessage) return;
-
-            chatInput.disabled = true;
-            chatSendBtn.disabled = true;
-
-            addChatMessage(userMessage, 'user');
-            chatInput.value = '';
-
-            const typingId = showTypingIndicator();
-
-            try {
-        chatHistory.push({
-            role: 'user',
-            content: userMessage
-        });
-
-        const response = await fetch(`${API_URL}/chat`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                message: userMessage,
-                history: chatHistory
-            })
-        });
-
-        removeTypingIndicator(typingId);
-
-        if (!response.ok) {
-            throw new Error('Chat request failed');
-        }
-
-        const data = await response.json();
         
-        if (!data.success) {
-            throw new Error(data.error || 'Unknown error');
-        }
-        
-        const botReply = data.reply;
-
-        chatHistory.push({
-            role: 'assistant',
-            content: botReply
-        });
-
-        const shouldShowFunFact = Math.random() > 0.5;
-        addChatMessage(botReply, 'bot', shouldShowFunFact ? getRandomFunFact() : null);
-
-    } catch (error) {
-        console.error('Chat error:', error);
-        removeTypingIndicator(typingId);
-        addChatMessage('Sorry, I encountered an error. Please try again.', 'bot');
-    }
 
         function addChatMessage(message, sender, funFact = null) {
             const messageDiv = document.createElement('div');
@@ -645,5 +585,6 @@
     </script>
 </body>
 </html>
+
 
 
