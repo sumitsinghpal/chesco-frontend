@@ -29,8 +29,7 @@
             background: white;
             border-radius: 12px;
             padding: 20px 24px;
-            margin-bottom: 32px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            margin-bottom: 20px;  /* ← Reduced spacing */
         }
         .news-section h3 {
             font-size: 18px;
@@ -98,7 +97,7 @@
         
         .content-grid {
             display: grid;
-            grid-template-columns: 1fr 400px;
+            grid-template-columns: 60fr 40fr;
             gap: 24px;
             align-items: start;
         }
@@ -329,15 +328,16 @@
         </div>
 
         <!-- NEWS SECTION - Full Width -->
-        <div class="news-section">
+        
+
+        <div class="content-grid">
+            <div>
+                <div class="news-section">
             <h3>📰 Latest News</h3>
             <div class="news-scroll" id="newsScroll">
                 <p style="color: #9ca3af; padding: 20px;">Loading news...</p>
             </div>
         </div>
-
-        <div class="content-grid">
-            <div>
                 <div id="errorMessage"></div>
                 <h3 class="results-header" id="resultsHeader">0 Results Found</h3>
                 <div id="results"></div>
@@ -652,3 +652,4 @@
     </script>
 </body>
 </html>
+
