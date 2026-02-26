@@ -24,6 +24,78 @@
         select:focus { outline: none; border-color: #667eea; }
         select:hover { border-color: #a0a5b0; }
         
+        /* NEWS SECTION - Full Width Below Search */
+        .news-section {
+            background: white;
+            border-radius: 12px;
+            padding: 20px 24px;
+            margin-bottom: 32px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        .news-section h3 {
+            font-size: 18px;
+            font-weight: 600;
+            color: #111827;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .news-scroll {
+            display: flex;
+            gap: 16px;
+            overflow-x: auto;
+            padding-bottom: 8px;
+        }
+        .news-scroll::-webkit-scrollbar {
+            height: 8px;
+        }
+        .news-scroll::-webkit-scrollbar-track {
+            background: #f3f4f6;
+            border-radius: 4px;
+        }
+        .news-scroll::-webkit-scrollbar-thumb {
+            background: #667eea;
+            border-radius: 4px;
+        }
+        .news-card {
+            min-width: 280px;
+            background: #f9fafb;
+            border-radius: 10px;
+            padding: 16px;
+            border-left: 4px solid #667eea;
+            transition: all 0.3s;
+        }
+        .news-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .news-card-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: #374151;
+            margin-bottom: 8px;
+            line-height: 1.4;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        .news-card-meta {
+            font-size: 12px;
+            color: #9ca3af;
+            margin-bottom: 10px;
+        }
+        .news-card-link {
+            color: #667eea;
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        .news-card-link:hover {
+            text-decoration: underline;
+        }
+        
         .content-grid {
             display: grid;
             grid-template-columns: 1fr 400px;
@@ -31,62 +103,152 @@
             align-items: start;
         }
         
-        .news-widget { 
-            background: white; 
-            border-radius: 12px; 
-            padding: 20px; 
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15); 
+        /* CHATBOT WIDGET - Replaces News Sidebar */
+        .chatbot-widget {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
             position: sticky;
             top: 20px;
-        }
-        .news-widget h3 { 
-            font-size: 18px; 
-            font-weight: 600; 
-            color: #111827; 
-            margin-bottom: 16px; 
-            display: flex; 
-            align-items: center; 
-            gap: 8px;
-        }
-        .news-item { 
-            padding: 12px 0; 
-            border-bottom: 1px solid #e5e7eb;
-            transition: all 0.3s;
-        }
-        .news-item:last-child { 
-            border-bottom: none; 
-        }
-        .news-item:hover { 
-            background: #f9fafb; 
-            padding-left: 8px; 
-            margin-left: -8px; 
-            padding-right: 8px;
-            border-radius: 8px;
-        }
-        .news-title { 
-            font-size: 14px; 
-            font-weight: 600; 
-            color: #374151; 
-            margin-bottom: 4px; 
-            line-height: 1.4;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
+            height: 600px;
+            display: flex;
+            flex-direction: column;
             overflow: hidden;
         }
-        .news-source { 
-            font-size: 12px; 
-            color: #9ca3af; 
-            margin-bottom: 8px;
+        .chatbot-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            text-align: center;
         }
-        .news-link { 
-            color: #667eea; 
-            text-decoration: none; 
-            font-size: 12px; 
+        .chatbot-header h3 {
+            font-size: 18px;
             font-weight: 600;
+            margin-bottom: 4px;
         }
-        .news-link:hover { 
-            text-decoration: underline; 
+        .chatbot-header p {
+            font-size: 12px;
+            opacity: 0.9;
+        }
+        .chatbot-messages {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px;
+            background: #f9fafb;
+        }
+        .chatbot-message {
+            margin-bottom: 16px;
+            animation: fadeInMsg 0.3s ease;
+        }
+        @keyframes fadeInMsg {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .chatbot-message.bot {
+            display: flex;
+            gap: 10px;
+        }
+        .chatbot-message.user {
+            display: flex;
+            justify-content: flex-end;
+        }
+        .bot-avatar {
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+        .message-content {
+            background: white;
+            padding: 12px 16px;
+            border-radius: 12px;
+            max-width: 85%;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            line-height: 1.5;
+            font-size: 14px;
+        }
+        .chatbot-message.user .message-content {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        .fun-fact {
+            background: #fef3c7;
+            border-left: 3px solid #f59e0b;
+            padding: 10px;
+            margin-top: 8px;
+            border-radius: 6px;
+            font-size: 13px;
+            color: #78350f;
+        }
+        .fun-fact strong {
+            color: #92400e;
+        }
+        .chatbot-input-area {
+            padding: 16px;
+            background: white;
+            border-top: 1px solid #e5e7eb;
+        }
+        .chatbot-input-row {
+            display: flex;
+            gap: 8px;
+        }
+        .chatbot-input {
+            flex: 1;
+            padding: 10px 14px;
+            border: 2px solid #d1d5db;
+            border-radius: 8px;
+            font-size: 14px;
+            font-family: inherit;
+        }
+        .chatbot-input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        .chatbot-send-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+        .chatbot-send-btn:hover:not(:disabled) {
+            transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(102,126,234,0.4);
+        }
+        .chatbot-send-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        .typing-indicator {
+            display: flex;
+            gap: 4px;
+            padding: 12px 16px;
+            background: white;
+            border-radius: 12px;
+            width: fit-content;
+        }
+        .typing-dot {
+            width: 8px;
+            height: 8px;
+            background: #9ca3af;
+            border-radius: 50%;
+            animation: typingBounce 1.4s infinite;
+        }
+        .typing-dot:nth-child(2) { animation-delay: 0.2s; }
+        .typing-dot:nth-child(3) { animation-delay: 0.4s; }
+        @keyframes typingBounce {
+            0%, 60%, 100% { transform: translateY(0); }
+            30% { transform: translateY(-10px); }
         }
         
         .results-header { font-size: 20px; font-weight: 600; margin-bottom: 20px; color: white; text-shadow: 0 2px 4px rgba(0,0,0,0.2); }
@@ -117,7 +279,7 @@
             .content-grid {
                 grid-template-columns: 1fr;
             }
-            .news-widget {
+            .chatbot-widget {
                 position: relative;
                 top: 0;
             }
@@ -129,6 +291,7 @@
             .search-box { padding: 20px; }
             .result-card { padding: 20px; }
             .header-content { flex-direction: column; text-align: center; }
+            .news-card { min-width: 240px; }
         }
     </style>
 </head>
@@ -165,6 +328,14 @@
             </div>
         </div>
 
+        <!-- NEWS SECTION - Full Width -->
+        <div class="news-section">
+            <h3>📰 Latest News</h3>
+            <div class="news-scroll" id="newsScroll">
+                <p style="color: #9ca3af; padding: 20px;">Loading news...</p>
+            </div>
+        </div>
+
         <div class="content-grid">
             <div>
                 <div id="errorMessage"></div>
@@ -172,30 +343,196 @@
                 <div id="results"></div>
             </div>
 
-            <!-- NEWS WIDGET -->
-            <div class="news-widget">
-                <h3>📰 Latest News</h3>
-                <div id="newsContent">
-                    <p style="text-align: center; color: #9ca3af; padding: 20px; font-size: 14px;">Loading news...</p>
+            <!-- ASK CHESCO CHATBOT -->
+            <div class="chatbot-widget">
+                <div class="chatbot-header">
+                    <h3>💬 Ask CHESCO</h3>
+                    <p>Your Electric Motor Expert</p>
+                </div>
+                <div class="chatbot-messages" id="chatMessages">
+                    <div class="chatbot-message bot">
+                        <div class="bot-avatar">🤖</div>
+                        <div class="message-content">
+                            Hi! I'm your CHESCO assistant. Ask me anything about electric motors - design, specifications, applications, or technical questions!
+                        </div>
+                    </div>
+                </div>
+                <div class="chatbot-input-area">
+                    <div class="chatbot-input-row">
+                        <input type="text" id="chatInput" class="chatbot-input" placeholder="Ask about electric motors..." maxlength="500">
+                        <button id="chatSendBtn" class="chatbot-send-btn">Send</button>
+                    </div>
                 </div>
             </div>
         </div>
     </main>
 
     <footer>
-        <p>&copy; Center for Hybrid Electric Systems (CHESCO), Cottbus https://www.b-tu.de/chesco/ </p>
+        <p>&copy; Center for Hybrid Electric Systems (CHESCO), Cottbus https://www.b-tu.de/chesco/</p>
     </footer>
 
     <script>
         const API_URL = 'https://chesco-backend.onrender.com/api';
+        const GROQ_API_KEY = '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';
         let searchTimeout;
+        let chatHistory = [];
 
         const searchInput = document.getElementById('searchInput');
         const yearFilter = document.getElementById('yearFilter');
         const resultsDiv = document.getElementById('results');
         const resultsHeader = document.getElementById('resultsHeader');
         const errorMessage = document.getElementById('errorMessage');
+        const chatMessages = document.getElementById('chatMessages');
+        const chatInput = document.getElementById('chatInput');
+        const chatSendBtn = document.getElementById('chatSendBtn');
 
+        // ============================================
+        // MOTOR FUN FACTS DATABASE
+        // ============================================
+        const motorFunFacts = [
+            "The first practical electric motor was built by Michael Faraday in 1821!",
+            "Electric motors can be up to 90% efficient, compared to 20-30% for combustion engines.",
+            "The world's most powerful electric motor (for ships) produces over 30 MW of power!",
+            "Tesla's Model S motor spins at up to 18,000 RPM - that's 300 rotations per second!",
+            "Electric motors produce maximum torque instantly, unlike gas engines that need to rev up.",
+            "The first electric car was built in 1832, decades before gasoline cars!",
+            "Regenerative braking in EVs converts motion back into electricity, improving efficiency by 10-25%.",
+            "Brushless DC motors can last 10,000+ hours without maintenance due to no physical contact.",
+            "Electric motors are reversible - they can work as generators to produce electricity!",
+            "The magnetic field in an electric motor travels at near the speed of light!",
+            "Modern electric motors use rare-earth magnets that are 10x stronger than regular magnets.",
+            "Induction motors, invented by Nikola Tesla in 1887, are still widely used today!",
+            "Electric motors power everything from tiny watch movements to massive cargo ships.",
+            "The efficiency of electric motors increases with size - larger motors waste less energy.",
+            "Some electric motors can operate reliably at temperatures from -40°C to over 200°C!"
+        ];
+
+        function getRandomFunFact() {
+            return motorFunFacts[Math.floor(Math.random() * motorFunFacts.length)];
+        }
+
+        // ============================================
+        // CHATBOT SYSTEM PROMPT
+        // ============================================
+        const SYSTEM_PROMPT = `You are "Ask CHESCO" - a specialized technical assistant for the Center for Hybrid Electric Systems (CHESCO) in Cottbus, Germany.
+
+
+        // ============================================
+        // CHATBOT FUNCTIONS
+        // ============================================
+        async function sendChatMessage() {
+            const userMessage = chatInput.value.trim();
+            if (!userMessage) return;
+
+            chatInput.disabled = true;
+            chatSendBtn.disabled = true;
+
+            addChatMessage(userMessage, 'user');
+            chatInput.value = '';
+
+            const typingId = showTypingIndicator();
+
+            try {
+                chatHistory.push({
+                    role: 'user',
+                    content: userMessage
+                });
+
+                const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+                    method: 'POST',
+                    headers: {
+                        'Authorization': `Bearer ${GROQ_API_KEY}`,
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        model: 'llama-3.3-70b-versatile',
+                        messages: [
+                            { role: 'system', content: SYSTEM_PROMPT },
+                            ...chatHistory
+                        ],
+                        temperature: 0.7,
+                        max_tokens: 500
+                    })
+                });
+
+                removeTypingIndicator(typingId);
+
+                if (!response.ok) {
+                    throw new Error('API request failed');
+                }
+
+                const data = await response.json();
+                const botReply = data.choices[0].message.content;
+
+                chatHistory.push({
+                    role: 'assistant',
+                    content: botReply
+                });
+
+                const shouldShowFunFact = Math.random() > 0.5;
+                addChatMessage(botReply, 'bot', shouldShowFunFact ? getRandomFunFact() : null);
+
+            } catch (error) {
+                console.error('Chat error:', error);
+                removeTypingIndicator(typingId);
+                addChatMessage('Sorry, I encountered an error. Please try again.', 'bot');
+            } finally {
+                chatInput.disabled = false;
+                chatSendBtn.disabled = false;
+                chatInput.focus();
+            }
+        }
+
+        function addChatMessage(message, sender, funFact = null) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `chatbot-message ${sender}`;
+
+            if (sender === 'bot') {
+                messageDiv.innerHTML = `
+                    <div class="bot-avatar">🤖</div>
+                    <div>
+                        <div class="message-content">${message}</div>
+                        ${funFact ? `<div class="fun-fact"><strong>💡 Fun Fact:</strong> ${funFact}</div>` : ''}
+                    </div>
+                `;
+            } else {
+                messageDiv.innerHTML = `<div class="message-content">${message}</div>`;
+            }
+
+            chatMessages.appendChild(messageDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        function showTypingIndicator() {
+            const typingDiv = document.createElement('div');
+            typingDiv.className = 'chatbot-message bot';
+            typingDiv.id = 'typingIndicator';
+            typingDiv.innerHTML = `
+                <div class="bot-avatar">🤖</div>
+                <div class="typing-indicator">
+                    <div class="typing-dot"></div>
+                    <div class="typing-dot"></div>
+                    <div class="typing-dot"></div>
+                </div>
+            `;
+            chatMessages.appendChild(typingDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+            return 'typingIndicator';
+        }
+
+        function removeTypingIndicator(id) {
+            const indicator = document.getElementById(id);
+            if (indicator) indicator.remove();
+        }
+
+        chatSendBtn.addEventListener('click', sendChatMessage);
+        chatInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') sendChatMessage();
+        });
+
+        // ============================================
+        // SEARCH FUNCTIONS
+        // ============================================
         function showLoading() {
             resultsDiv.innerHTML = '<div class="loading"><div class="spinner"></div><p style="margin-top: 20px; color: white; font-size: 16px; font-weight: 600;">Searching academic databases...</p></div>';
         }
@@ -284,39 +621,34 @@
                 displayNews(data.news || []);
             } catch (error) {
                 console.error('News fetch error:', error);
-                document.getElementById('newsContent').innerHTML = '<p style="text-align: center; color: #9ca3af; font-size: 14px; padding: 20px;">Unable to load news</p>';
+                document.getElementById('newsScroll').innerHTML = '<p style="color: #9ca3af; padding: 20px;">Unable to load news</p>';
             }
         }
 
         function displayNews(newsItems) {
-            const newsContent = document.getElementById('newsContent');
+            const newsScroll = document.getElementById('newsScroll');
             
             if (newsItems.length === 0) {
-                newsContent.innerHTML = '<p style="text-align: center; color: #9ca3af; font-size: 14px; padding: 20px;">No recent news available</p>';
+                newsScroll.innerHTML = '<p style="color: #9ca3af; padding: 20px;">No recent news available</p>';
                 return;
             }
 
-            newsContent.innerHTML = newsItems.map(item => {
+            newsScroll.innerHTML = newsItems.map(item => {
                 const date = item.published ? new Date(item.published).toLocaleDateString('en-US', { month: 'short', day: 'numeric' }) : '';
                 return `
-                    <div class="news-item">
-                        <div class="news-title">${item.title}</div>
-                        <div class="news-source">${item.source}${date ? ' • ' + date : ''}</div>
-                        <a href="${item.url}" target="_blank" rel="noopener noreferrer" class="news-link">Read more →</a>
+                    <div class="news-card">
+                        <div class="news-card-title">${item.title}</div>
+                        <div class="news-card-meta">${item.source}${date ? ' • ' + date : ''}</div>
+                        <a href="${item.url}" target="_blank" rel="noopener noreferrer" class="news-card-link">Read more →</a>
                     </div>
                 `;
             }).join('');
         }
 
-        // Initialize
         resultsDiv.innerHTML = '<div class="empty-state"><div class="empty-state-icon">📚</div><p style="font-size: 18px; color: #6b7280;">Start typing above to search for electric motor publications</p></div>';
         
-        // Fetch news when page loads
         fetchNews();
-        
-        // Refresh news every 10 minutes
         setInterval(fetchNews, 600000);
     </script>
 </body>
 </html>
-
