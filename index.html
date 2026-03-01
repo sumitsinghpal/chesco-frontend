@@ -15,51 +15,52 @@
         h1 { font-size: 26px; font-weight: bold; color: #111827; margin-bottom: 4px; }
         .subtitle { font-size: 14px; color: #6b7280; }
         main { max-width: 1400px; margin: 32px auto; padding: 0 16px; }
-        .search-box { background: white; border-radius: 12px; padding: 28px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); margin-bottom: 32px; }
-        .search-box h2 { font-size: 22px; margin-bottom: 24px; color: #111827; }
-        input[type="text"] { width: 100%; padding: 14px 18px; border: 2px solid #d1d5db; border-radius: 10px; font-size: 16px; margin-bottom: 18px; transition: all 0.3s; }
+        
+        .search-box { background: white; border-radius: 12px; padding: 24px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); margin-bottom: 20px; }
+        .search-box h2 { font-size: 20px; margin-bottom: 20px; color: #111827; }
+        input[type="text"] { width: 100%; padding: 12px 16px; border: 2px solid #d1d5db; border-radius: 10px; font-size: 16px; margin-bottom: 16px; transition: all 0.3s; }
         input[type="text"]:focus { outline: none; border-color: #667eea; box-shadow: 0 0 0 4px rgba(102,126,234,0.1); }
         .filter-row { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
-        select { padding: 10px 16px; border: 2px solid #d1d5db; border-radius: 8px; font-size: 14px; background: white; cursor: pointer; transition: all 0.3s; }
+        select { padding: 8px 14px; border: 2px solid #d1d5db; border-radius: 8px; font-size: 14px; background: white; cursor: pointer; transition: all 0.3s; }
         select:focus { outline: none; border-color: #667eea; }
         select:hover { border-color: #a0a5b0; }
         
         .news-section {
             background: white;
             border-radius: 12px;
-            padding: 20px 24px;
+            padding: 18px 20px;
             margin-bottom: 20px;
             box-shadow: 0 4px 12px rgba(0,0,0,0.15);
         }
         .news-section h3 {
-            font-size: 18px;
+            font-size: 16px;
             font-weight: 600;
             color: #111827;
-            margin-bottom: 16px;
+            margin-bottom: 14px;
             display: flex;
             align-items: center;
             gap: 8px;
         }
         .news-scroll {
             display: flex;
-            gap: 16px;
+            gap: 14px;
             overflow-x: auto;
-            padding-bottom: 8px;
+            padding-bottom: 6px;
         }
-        .news-scroll::-webkit-scrollbar { height: 8px; }
+        .news-scroll::-webkit-scrollbar { height: 6px; }
         .news-scroll::-webkit-scrollbar-track { background: #f3f4f6; border-radius: 4px; }
         .news-scroll::-webkit-scrollbar-thumb { background: #667eea; border-radius: 4px; }
         .news-card {
-            min-width: 280px;
+            min-width: 260px;
             background: #f9fafb;
             border-radius: 10px;
-            padding: 16px;
+            padding: 14px;
             border-left: 4px solid #667eea;
             transition: all 0.3s;
         }
         .news-card:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
         .news-card-title {
-            font-size: 14px;
+            font-size: 13px;
             font-weight: 600;
             color: #374151;
             margin-bottom: 8px;
@@ -69,13 +70,13 @@
             -webkit-box-orient: vertical;
             overflow: hidden;
         }
-        .news-card-meta { font-size: 12px; color: #9ca3af; margin-bottom: 10px; }
-        .news-card-link { color: #667eea; text-decoration: none; font-size: 12px; font-weight: 600; }
+        .news-card-meta { font-size: 11px; color: #9ca3af; margin-bottom: 8px; }
+        .news-card-link { color: #667eea; text-decoration: none; font-size: 11px; font-weight: 600; }
         .news-card-link:hover { text-decoration: underline; }
         
         .content-grid {
             display: grid;
-            grid-template-columns: 60fr 40fr;
+            grid-template-columns: 1fr 1fr;
             gap: 24px;
             align-items: start;
         }
@@ -94,7 +95,7 @@
         .chatbot-header {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
-            padding: 20px;
+            padding: 18px;
             text-align: center;
         }
         .chatbot-header h3 { font-size: 18px; font-weight: 600; margin-bottom: 4px; }
@@ -102,10 +103,10 @@
         .chatbot-messages {
             flex: 1;
             overflow-y: auto;
-            padding: 20px;
+            padding: 18px;
             background: #f9fafb;
         }
-        .chatbot-message { margin-bottom: 16px; animation: fadeInMsg 0.3s ease; }
+        .chatbot-message { margin-bottom: 14px; animation: fadeInMsg 0.3s ease; }
         @keyframes fadeInMsg {
             from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
@@ -113,25 +114,25 @@
         .chatbot-message.bot { display: flex; gap: 10px; }
         .chatbot-message.user { display: flex; justify-content: flex-end; }
         .bot-avatar {
-            width: 32px;
-            height: 32px;
+            width: 30px;
+            height: 30px;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
-            font-size: 16px;
+            font-size: 15px;
             flex-shrink: 0;
         }
         .message-content {
             background: white;
-            padding: 12px 16px;
+            padding: 10px 14px;
             border-radius: 12px;
             max-width: 85%;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
             line-height: 1.5;
-            font-size: 14px;
+            font-size: 13px;
         }
         .chatbot-message.user .message-content {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -140,25 +141,25 @@
         .fun-fact {
             background: #fef3c7;
             border-left: 3px solid #f59e0b;
-            padding: 10px;
+            padding: 8px;
             margin-top: 8px;
             border-radius: 6px;
-            font-size: 13px;
+            font-size: 12px;
             color: #78350f;
         }
         .fun-fact strong { color: #92400e; }
         .chatbot-input-area {
-            padding: 16px;
+            padding: 14px;
             background: white;
             border-top: 1px solid #e5e7eb;
         }
         .chatbot-input-row { display: flex; gap: 8px; }
         .chatbot-input {
             flex: 1;
-            padding: 10px 14px;
+            padding: 9px 12px;
             border: 2px solid #d1d5db;
             border-radius: 8px;
-            font-size: 14px;
+            font-size: 13px;
             font-family: inherit;
         }
         .chatbot-input:focus { outline: none; border-color: #667eea; }
@@ -166,11 +167,11 @@
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
             border: none;
-            padding: 10px 20px;
+            padding: 9px 18px;
             border-radius: 8px;
             cursor: pointer;
             font-weight: 600;
-            font-size: 14px;
+            font-size: 13px;
             transition: all 0.3s;
         }
         .chatbot-send-btn:hover:not(:disabled) {
@@ -181,14 +182,14 @@
         .typing-indicator {
             display: flex;
             gap: 4px;
-            padding: 12px 16px;
+            padding: 10px 14px;
             background: white;
             border-radius: 12px;
             width: fit-content;
         }
         .typing-dot {
-            width: 8px;
-            height: 8px;
+            width: 7px;
+            height: 7px;
             background: #9ca3af;
             border-radius: 50%;
             animation: typingBounce 1.4s infinite;
@@ -197,27 +198,27 @@
         .typing-dot:nth-child(3) { animation-delay: 0.4s; }
         @keyframes typingBounce {
             0%, 60%, 100% { transform: translateY(0); }
-            30% { transform: translateY(-10px); }
+            30% { transform: translateY(-8px); }
         }
         
-        .results-header { font-size: 20px; font-weight: 600; margin-bottom: 20px; color: white; text-shadow: 0 2px 4px rgba(0,0,0,0.2); }
-        .result-card { background: white; border-radius: 12px; padding: 28px; margin-bottom: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); transition: all 0.3s; border-left: 4px solid #667eea; }
+        .results-header { font-size: 18px; font-weight: 600; margin-bottom: 18px; color: white; text-shadow: 0 2px 4px rgba(0,0,0,0.2); }
+        .result-card { background: white; border-radius: 12px; padding: 24px; margin-bottom: 18px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); transition: all 0.3s; border-left: 4px solid #667eea; }
         .result-card:hover { box-shadow: 0 8px 24px rgba(0,0,0,0.15); transform: translateY(-2px); }
-        .result-title { font-size: 20px; font-weight: 600; color: #111827; margin-bottom: 12px; line-height: 1.4; }
-        .result-meta { font-size: 14px; color: #6b7280; margin-bottom: 10px; }
-        .result-journal { font-size: 14px; color: #374151; font-style: italic; margin-bottom: 14px; background: #f3f4f6; padding: 8px 12px; border-radius: 6px; display: inline-block; }
-        .result-abstract { color: #4b5563; margin-bottom: 18px; line-height: 1.7; }
-        .result-footer { display: flex; justify-content: space-between; align-items: center; padding-top: 18px; border-top: 2px solid #e5e7eb; }
-        .citations { font-size: 14px; color: #6b7280; background: #fef3c7; padding: 6px 12px; border-radius: 20px; font-weight: 600; }
-        .view-btn { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 10px 20px; border-radius: 8px; text-decoration: none; display: inline-block; transition: all 0.3s; font-weight: 600; }
+        .result-title { font-size: 18px; font-weight: 600; color: #111827; margin-bottom: 10px; line-height: 1.4; }
+        .result-meta { font-size: 13px; color: #6b7280; margin-bottom: 8px; }
+        .result-journal { font-size: 13px; color: #374151; font-style: italic; margin-bottom: 12px; background: #f3f4f6; padding: 6px 10px; border-radius: 6px; display: inline-block; }
+        .result-abstract { color: #4b5563; margin-bottom: 16px; line-height: 1.6; font-size: 14px; }
+        .result-footer { display: flex; justify-content: space-between; align-items: center; padding-top: 16px; border-top: 2px solid #e5e7eb; }
+        .citations { font-size: 13px; color: #6b7280; background: #fef3c7; padding: 5px 10px; border-radius: 20px; font-weight: 600; }
+        .view-btn { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 8px 16px; border-radius: 8px; text-decoration: none; display: inline-block; transition: all 0.3s; font-weight: 600; font-size: 13px; }
         .view-btn:hover { transform: scale(1.05); box-shadow: 0 4px 12px rgba(102,126,234,0.4); }
-        .loading { text-align: center; padding: 60px; }
-        .spinner { border: 5px solid rgba(255,255,255,0.3); border-top: 5px solid white; border-radius: 50%; width: 60px; height: 60px; animation: spin 1s linear infinite; margin: 0 auto; }
+        .loading { text-align: center; padding: 50px; }
+        .spinner { border: 4px solid rgba(255,255,255,0.3); border-top: 4px solid white; border-radius: 50%; width: 50px; height: 50px; animation: spin 1s linear infinite; margin: 0 auto; }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-        .empty-state { background: white; border-radius: 12px; padding: 60px; text-align: center; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
-        .empty-state-icon { font-size: 64px; margin-bottom: 16px; }
-        .error { background: #fee2e2; border: 2px solid #ef4444; border-radius: 10px; padding: 16px; margin-bottom: 20px; color: #991b1b; font-size: 14px; }
-        footer { background: white; border-top: 1px solid #e5e7eb; margin-top: 48px; padding: 24px; text-align: center; font-size: 14px; color: #6b7280; }
+        .empty-state { background: white; border-radius: 12px; padding: 50px; text-align: center; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+        .empty-state-icon { font-size: 56px; margin-bottom: 14px; }
+        .error { background: #fee2e2; border: 2px solid #ef4444; border-radius: 10px; padding: 14px; margin-bottom: 18px; color: #991b1b; font-size: 13px; }
+        footer { background: white; border-top: 1px solid #e5e7eb; margin-top: 40px; padding: 20px; text-align: center; font-size: 13px; color: #6b7280; }
         
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
@@ -226,16 +227,16 @@
         
         @media (max-width: 1024px) {
             .content-grid { grid-template-columns: 1fr; }
-            .chatbot-widget { position: relative; top: 0; }
+            .chatbot-widget { position: relative; top: 0; height: 500px; }
         }
         
         @media (max-width: 768px) {
             h1 { font-size: 20px; }
-            .result-title { font-size: 18px; }
-            .search-box { padding: 20px; }
-            .result-card { padding: 20px; }
+            .result-title { font-size: 16px; }
+            .search-box { padding: 18px; }
+            .result-card { padding: 18px; }
             .header-content { flex-direction: column; text-align: center; }
-            .news-card { min-width: 240px; }
+            .news-card { min-width: 220px; }
         }
     </style>
 </head>
@@ -253,33 +254,34 @@
     </header>
 
     <main>
-        <div class="search-box">
-            <h2>🔍 Search Electric Motor Publications</h2>
-            <input type="text" id="searchInput" placeholder="Search by title, author, or keywords...">
-            <div class="filter-row">
-                <label for="yearFilter" style="font-size: 14px; color: #374151; font-weight: 600;">Filter by Year:</label>
-                <select id="yearFilter">
-                    <option value="all">All Years</option>
-                    <option value="2025">2025</option>
-                    <option value="2024" selected>2024</option>
-                    <option value="2023">2023</option>
-                    <option value="2022">2022</option>
-                    <option value="2021">2021</option>
-                    <option value="2020">2020</option>
-                    <option value="2019">2019</option>
-                    <option value="2018">2018</option>
-                </select>
-            </div>
-        </div>
-
         <div class="content-grid">
             <div>
+                <div class="search-box">
+                    <h2>🔍 Search Electric Motor Publications</h2>
+                    <input type="text" id="searchInput" placeholder="Search by title, author, or keywords...">
+                    <div class="filter-row">
+                        <label for="yearFilter" style="font-size: 13px; color: #374151; font-weight: 600;">Filter by Year:</label>
+                        <select id="yearFilter">
+                            <option value="all">All Years</option>
+                            <option value="2025">2025</option>
+                            <option value="2024" selected>2024</option>
+                            <option value="2023">2023</option>
+                            <option value="2022">2022</option>
+                            <option value="2021">2021</option>
+                            <option value="2020">2020</option>
+                            <option value="2019">2019</option>
+                            <option value="2018">2018</option>
+                        </select>
+                    </div>
+                </div>
+
                 <div class="news-section">
                     <h3>📰 Latest News</h3>
                     <div class="news-scroll" id="newsScroll">
-                        <p style="color: #9ca3af; padding: 20px;">Loading news...</p>
+                        <p style="color: #9ca3af; padding: 18px; font-size: 13px;">Loading news...</p>
                     </div>
                 </div>
+
                 <div id="errorMessage"></div>
                 <h3 class="results-header" id="resultsHeader">0 Results Found</h3>
                 <div id="results"></div>
@@ -490,7 +492,7 @@ Say: "I'm specialized in electric motors and hybrid systems. I can't help with [
         });
 
         function showLoading() {
-            resultsDiv.innerHTML = '<div class="loading"><div class="spinner"></div><p style="margin-top: 20px; color: white; font-size: 16px; font-weight: 600;">Searching academic databases...</p></div>';
+            resultsDiv.innerHTML = '<div class="loading"><div class="spinner"></div><p style="margin-top: 18px; color: white; font-size: 15px; font-weight: 600;">Searching academic databases...</p></div>';
         }
 
         function showError(message) {
@@ -504,9 +506,9 @@ Say: "I'm specialized in electric motors and hybrid systems. I can't help with [
 
             if (results.length === 0) {
                 if (searchInput.value === '') {
-                    resultsDiv.innerHTML = '<div class="empty-state"><div class="empty-state-icon">📚</div><p style="font-size: 18px; color: #6b7280;">Start typing above to search for electric motor publications</p></div>';
+                    resultsDiv.innerHTML = '<div class="empty-state"><div class="empty-state-icon">📚</div><p style="font-size: 16px; color: #6b7280;">Start typing above to search for electric motor publications</p></div>';
                 } else {
-                    resultsDiv.innerHTML = `<div class="empty-state"><div class="empty-state-icon">🔍</div><p style="font-size: 18px; color: #6b7280;">No publications found for "<strong>${searchInput.value}</strong>"</p><p style="margin-top: 8px; color: #9ca3af;">Try different keywords or adjust filters</p></div>`;
+                    resultsDiv.innerHTML = `<div class="empty-state"><div class="empty-state-icon">🔍</div><p style="font-size: 16px; color: #6b7280;">No publications found for "<strong>${searchInput.value}</strong>"</p><p style="margin-top: 8px; color: #9ca3af; font-size: 14px;">Try different keywords or adjust filters</p></div>`;
                 }
                 return;
             }
@@ -531,7 +533,7 @@ Say: "I'm specialized in electric motors and hybrid systems. I can't help with [
 
             if (!query) {
                 resultsHeader.textContent = '0 Results Found';
-                resultsDiv.innerHTML = '<div class="empty-state"><div class="empty-state-icon">📚</div><p style="font-size: 18px; color: #6b7280;">Start typing above to search for electric motor publications</p></div>';
+                resultsDiv.innerHTML = '<div class="empty-state"><div class="empty-state-icon">📚</div><p style="font-size: 16px; color: #6b7280;">Start typing above to search for electric motor publications</p></div>';
                 return;
             }
 
@@ -540,9 +542,7 @@ Say: "I'm specialized in electric motors and hybrid systems. I can't help with [
 
             try {
                 const response = await fetch(`${API_URL}/search?q=${encodeURIComponent(query)}&year=${year}`);
-                
                 if (!response.ok) throw new Error('Search failed');
-
                 const data = await response.json();
                 displayResults(data);
             } catch (error) {
@@ -568,14 +568,14 @@ Say: "I'm specialized in electric motors and hybrid systems. I can't help with [
                 displayNews(data.news || []);
             } catch (error) {
                 console.error('News fetch error:', error);
-                document.getElementById('newsScroll').innerHTML = '<p style="color: #9ca3af; padding: 20px;">Unable to load news</p>';
+                document.getElementById('newsScroll').innerHTML = '<p style="color: #9ca3af; padding: 18px; font-size: 13px;">Unable to load news</p>';
             }
         }
 
         function displayNews(newsItems) {
             const newsScroll = document.getElementById('newsScroll');
             if (newsItems.length === 0) {
-                newsScroll.innerHTML = '<p style="color: #9ca3af; padding: 20px;">No recent news available</p>';
+                newsScroll.innerHTML = '<p style="color: #9ca3af; padding: 18px; font-size: 13px;">No recent news available</p>';
                 return;
             }
             newsScroll.innerHTML = newsItems.map(item => {
@@ -590,7 +590,7 @@ Say: "I'm specialized in electric motors and hybrid systems. I can't help with [
             }).join('');
         }
 
-        resultsDiv.innerHTML = '<div class="empty-state"><div class="empty-state-icon">📚</div><p style="font-size: 18px; color: #6b7280;">Start typing above to search for electric motor publications</p></div>';
+        resultsDiv.innerHTML = '<div class="empty-state"><div class="empty-state-icon">📚</div><p style="font-size: 16px; color: #6b7280;">Start typing above to search for electric motor publications</p></div>';
         fetchNews();
         setInterval(fetchNews, 600000);
     </script>
