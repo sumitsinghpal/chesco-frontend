@@ -321,7 +321,6 @@
 
     <script>
         const API_URL = 'https://chesco-backend.onrender.com/api';
-        const GROQ_API_KEY = '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';
         let searchTimeout;
         let chatHistory = [];
 
@@ -356,98 +355,59 @@
             return motorFunFacts[Math.floor(Math.random() * motorFunFacts.length)];
         }
 
-        const SYSTEM_PROMPT = `You are "Ask CHESCO" - a specialized technical assistant for the Center for Hybrid Electric Systems (CHESCO) in Cottbus, Germany.
-
-**YOUR ROLE:**
-- Answer questions ONLY about electric motors, hybrid systems, electric vehicles, power electronics, and related electromechanical topics
-- Provide accurate, technical information at an appropriate level for researchers and engineers
-- Be honest when you don't know specific details - say "I don't have specific data on that" rather than guessing
-- Stay focused on motors - politely decline off-topic questions
-
-**SCOPE (Answer these):**
-✅ Electric motor types (DC, AC, induction, synchronous, brushless, etc.)
-✅ Motor specifications (power, torque, efficiency, speed, cooling)
-✅ Motor control and drives (inverters, controllers, PWM)
-✅ Applications (EVs, industrial, aerospace, robotics)
-✅ Motor design and construction
-✅ Hybrid electric systems
-✅ Power electronics and converters
-✅ Motor testing and characterization
-
-**OUT OF SCOPE (Politely decline):**
-❌ General chatting, personal questions
-❌ Non-motor topics (weather, sports, politics, etc.)
-❌ Medical, legal, or financial advice
-❌ Unrelated engineering fields
-
-**RESPONSE STYLE:**
-- Keep answers concise (2-4 sentences for simple questions, 1-2 paragraphs for complex ones)
-- Use technical terms but explain them briefly
-- Include numbers/specs when relevant (e.g., "typical efficiency is 85-95%")
-- End with "Feel free to ask follow-up questions!" for complex topics
-
-**IF OFF-TOPIC:**
-Say: "I'm specialized in electric motors and hybrid systems. I can't help with [topic], but I'd be happy to answer any questions about electric motors, motor control, or hybrid electric systems!"
-
-**IMPORTANT:**
-- Never make up specifications or data
-- Always admit uncertainty with phrases like "typically", "generally", "approximately"
-- Prioritize safety in any electrical/motor-related advice`;
 
         async function sendChatMessage() {
-            const userMessage = chatInput.value.trim();
-            if (!userMessage) return;
+    const userMessage = chatInput.value.trim();
+    if (!userMessage) return;
 
-            chatInput.disabled = true;
-            chatSendBtn.disabled = true;
+    chatInput.disabled = true;
+    chatSendBtn.disabled = true;
 
-            addChatMessage(userMessage, 'user');
-            chatInput.value = '';
+    addChatMessage(userMessage, 'user');
+    chatInput.value = '';
 
-            const typingId = showTypingIndicator();
+    const typingId = showTypingIndicator();
 
-            try {
-                chatHistory.push({ role: 'user', content: userMessage });
+    try {
+        const response = await fetch(`${API_URL}/chat`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                message: userMessage,
+                history: chatHistory
+            })
+        });
 
-                const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
-                    method: 'POST',
-                    headers: {
-                        'Authorization': `Bearer ${GROQ_API_KEY}`,
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        model: 'llama-3.3-70b-versatile',
-                        messages: [
-                            { role: 'system', content: SYSTEM_PROMPT },
-                            ...chatHistory
-                        ],
-                        temperature: 0.7,
-                        max_tokens: 500
-                    })
-                });
+        removeTypingIndicator(typingId);
 
-                removeTypingIndicator(typingId);
+        if (!response.ok) throw new Error('API request failed');
 
-                if (!response.ok) throw new Error('API request failed');
-
-                const data = await response.json();
-                const botReply = data.choices[0].message.content;
-
-                chatHistory.push({ role: 'assistant', content: botReply });
-
-                const shouldShowFunFact = Math.random() > 0.5;
-                addChatMessage(botReply, 'bot', shouldShowFunFact ? getRandomFunFact() : null);
-
-            } catch (error) {
-                console.error('Chat error:', error);
-                removeTypingIndicator(typingId);
-                addChatMessage('Sorry, I encountered an error. Please try again.', 'bot');
-            } finally {
-                chatInput.disabled = false;
-                chatSendBtn.disabled = false;
-                chatInput.focus();
-            }
+        const data = await response.json();
+        
+        if (!data.success) {
+            throw new Error(data.error || 'Chat failed');
         }
+
+        const botReply = data.reply;
+
+        chatHistory.push({ role: 'user', content: userMessage });
+        chatHistory.push({ role: 'assistant', content: botReply });
+
+        const shouldShowFunFact = Math.random() > 0.5;
+        addChatMessage(botReply, 'bot', shouldShowFunFact ? getRandomFunFact() : null);
+
+    } catch (error) {
+        console.error('Chat error:', error);
+        removeTypingIndicator(typingId);
+        addChatMessage('Sorry, I encountered an error. Please try again.', 'bot');
+    } finally {
+        chatInput.disabled = false;
+        chatSendBtn.disabled = false;
+        chatInput.focus();
+    }
+}
 
         function addChatMessage(message, sender, funFact = null) {
             const messageDiv = document.createElement('div');
